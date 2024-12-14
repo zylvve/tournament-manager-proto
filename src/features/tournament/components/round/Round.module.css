@@ -1,0 +1,7 @@
+.round {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  
+  border: 1px solid black;
+}
