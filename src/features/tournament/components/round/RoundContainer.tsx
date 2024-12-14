@@ -2,7 +2,7 @@ import styles from './Round.module.css'
 import { useAppSelector } from '../../../../app/hooks';
 import { selectRounds } from '../../tournamentSlice';
 import MatchContainer from '../match/MatchContainer';
-import { Round } from '../../tournamentSlice';
+import type { Round } from '../../tournamentSlice';
 
 interface RoundContainerProps {
   round: Round;
@@ -10,7 +10,7 @@ interface RoundContainerProps {
 
 const RoundContainer = ({round}: RoundContainerProps) => {
   const rounds = useAppSelector(selectRounds);
-  const matches = rounds.find(rnd => rnd.roundNo == round.roundNo)?.matches;
+  const matches = rounds.find(rnd => rnd.roundNo === round.roundNo)?.matches;
   
   const matchesToRender = [];
   if (matches !== undefined) {

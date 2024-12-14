@@ -1,4 +1,4 @@
-import { TournamentSliceState } from "./tournamentSlice"
+import type { TournamentSliceState } from "./tournamentSlice"
 
 export const mockTournament: TournamentSliceState = {
   name: "mock",

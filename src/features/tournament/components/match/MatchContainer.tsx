@@ -1,5 +1,5 @@
 import styles from './Match.module.css'
-import { Match } from '../../tournamentSlice'
+import type { Match } from '../../tournamentSlice'
 import { selectParticipants } from '../../tournamentSlice';
 import { useAppSelector } from '../../../../app/hooks';
 
@@ -13,7 +13,7 @@ const MatchContainer = ({match}: MatchContainerProps) => {
   for (let scores of match.scores)  {
     scoreRows.push(
       <div key={scores.participantId}>
-        {participants.find(participant => participant.id == scores.participantId)?.name}
+        {participants.find(participant => participant.id === scores.participantId)?.name}
         {" - "}
         {scores.score}
       </div>
