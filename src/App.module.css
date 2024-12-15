@@ -1,0 +1,8 @@
+@import './themes.css';
+
+.app {
+  height: 100vh;
+
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-text);
+}
