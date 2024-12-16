@@ -1,28 +1,21 @@
 import styles from './Match.module.css'
 import type { Match } from '../../tournamentSlice'
-import { selectParticipants } from '../../tournamentSlice';
-import { useAppSelector } from '../../../../app/hooks';
+import ScoreRow from './ScoreRow';
 
 interface MatchContainerProps {
   match: Match;
 }
 
 const MatchContainer = ({match}: MatchContainerProps) => {
-  const participants = useAppSelector(selectParticipants);
   const scoreRows = [];
-  for (let scores of match.scores)  {
+  for (let score of match.scores)  {
     scoreRows.push(
-      <div key={scores.participantId}>
-        {participants.find(participant => participant.id === scores.participantId)?.name}
-        {" - "}
-        {scores.score}
-      </div>
+      <ScoreRow score={score} key={score.participantId}/>
     )
   }
 
   return (
     <div className={styles.match}>
-      Match {match.matchNo}
       {scoreRows}
     </div>
   )

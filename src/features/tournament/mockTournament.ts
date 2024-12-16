@@ -1,7 +1,7 @@
 import type { TournamentSliceState } from "./tournamentSlice"
 
 export const mockTournament: TournamentSliceState = {
-  name: "mock",
+  name: "Test Tournament",
   participants: [
     {
       id: 1,
@@ -30,12 +30,15 @@ export const mockTournament: TournamentSliceState = {
             {
               participantId: 1,
               score: 3,
+              result: 'W',
             },
             {
               participantId: 2,
               score: 2,
+              result: 'L',
             },
-          ]
+          ],
+          advanceTo: 3,
         },
         {
           matchNo: 2,
@@ -43,12 +46,15 @@ export const mockTournament: TournamentSliceState = {
             {
               participantId: 3,
               score: 1,
+              result: 'W',
             },
             {
               participantId: 4,
               score: 0,
+              result: 'L',
             },
-          ]
+          ],
+          advanceTo: 3,
         },
       ]
     },
@@ -60,11 +66,13 @@ export const mockTournament: TournamentSliceState = {
           scores: [
             {
               participantId: 1,
-              score: 2,
+              score: 1,
+              result: 'L',
             },
             {
               participantId: 3,
-              score: 1,
+              score: 2,
+              result: 'W',
             },
           ]
         }

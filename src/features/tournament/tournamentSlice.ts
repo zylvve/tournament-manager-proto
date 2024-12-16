@@ -6,14 +6,18 @@ interface Participant {
   name: string;
 }
 
-interface ParticipantScore {
+type Result = 'W' | 'D' | 'L'
+
+export interface ParticipantScore {
   participantId: number;
   score: number;
+  result?: Result;
 }
 
 export interface Match {
   matchNo: number;
   scores: ParticipantScore[];
+  advanceTo?: number;
 }
 
 export interface Round {
@@ -40,4 +44,4 @@ export const tournamentSlice = createSlice({
   }
 })
 
-export const { selectParticipants, selectRounds } = tournamentSlice.selectors
+export const { selectParticipants, selectRounds, selectName } = tournamentSlice.selectors

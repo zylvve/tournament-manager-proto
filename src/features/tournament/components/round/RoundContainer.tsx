@@ -21,8 +21,12 @@ const RoundContainer = ({round}: RoundContainerProps) => {
 
   return (
     <div className={styles.round}>
-      Round {round.roundNo}
-      {matchesToRender}
+      <div className={styles.round_title}>
+        Round {round.roundNo}
+      </div>
+      <div className={styles.matches}>
+        {matchesToRender}
+      </div>
     </div>
   )
 }

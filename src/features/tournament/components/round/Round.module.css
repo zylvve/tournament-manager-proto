@@ -1,7 +1,21 @@
 .round {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
+}
+
+.round_title {
+  height: 2rem;
   
-  border: 1px solid black;
+  font-weight: bold;
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 1;
+  
+  gap: 5px;
 }

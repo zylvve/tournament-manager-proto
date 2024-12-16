@@ -1,3 +1,33 @@
+@import '../../../../themes.css';
+
 .match {
-  border: 1px solid black;
+  width: 150px;
+}
+
+.score_row {
+  display: flex; 
+  justify-content: space-between;
+  
+  height: 1.5rem;
+  
+  background-color: var(--color-primary-bg);
+}
+
+.score {
+  width: 1.5rem;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+.result_W {
+  background-color: var(--color-result-w);
+}
+
+.result_D {
+  background-color: var(--color-result-d);
+}
+
+.result_L {
+  background-color: var(--color-result-l);
 }
