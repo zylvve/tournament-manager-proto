@@ -19,6 +19,22 @@ export const mockTournament: TournamentState = {
       id: 4,
       name: "Player 4",
     },
+    {
+      id: 5,
+      name: "Player 5",
+    },
+    {
+      id: 6,
+      name: "Player 6",
+    },
+    {
+      id: 7,
+      name: "Player 7",
+    },
+    {
+      id: 8,
+      name: "Player 8",
+    },
   ],
   rounds: [
     {
@@ -34,7 +50,7 @@ export const mockTournament: TournamentState = {
               participantId: 2,
             },
           ],
-          advanceTo: 3,
+          advanceTo: 5,
           isComplete: false,
         },
         {
@@ -47,7 +63,33 @@ export const mockTournament: TournamentState = {
               participantId: 4,
             },
           ],
-          advanceTo: 3,
+          advanceTo: 5,
+          isComplete: false,
+        },
+        {
+          matchNo: 3,
+          records: [
+            {
+              participantId: 5,
+            },
+            {
+              participantId: 6,
+            },
+          ],
+          advanceTo: 6,
+          isComplete: false,
+        },
+        {
+          matchNo: 4,
+          records: [
+            {
+              participantId: 7,
+            },
+            {
+              participantId: 8,
+            },
+          ],
+          advanceTo: 6,
           isComplete: false,
         },
       ]
@@ -56,7 +98,7 @@ export const mockTournament: TournamentState = {
       roundNo: 2,
       matches: [
         {
-          matchNo: 3,
+          matchNo: 5,
           records: [
             {
               advanceFrom: 1,
@@ -65,8 +107,39 @@ export const mockTournament: TournamentState = {
               advanceFrom: 2,
             },
           ],
+          advanceTo: 7,
           isComplete: false,
-        }
+        },
+        {
+          matchNo: 6,
+          records: [
+            {
+              advanceFrom: 3,
+            },
+            {
+              advanceFrom: 4,
+            },
+          ],
+          advanceTo: 7,
+          isComplete: false,
+        },
+      ]
+    },
+    {
+      roundNo: 3,
+      matches: [
+        {
+          matchNo: 7,
+          records: [
+            {
+              advanceFrom: 5,
+            },
+            {
+              advanceFrom: 6,
+            },
+          ],
+          isComplete: false,
+        },
       ]
     }
   ],
