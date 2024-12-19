@@ -1,9 +1,9 @@
+type Result = 'W' | 'D' | 'L'
+
 export interface Participant {
   id: number;
   name: string;
 }
-
-export type Result = 'W' | 'D' | 'L'
 
 export interface Record {
   participantId?: number;
@@ -28,4 +28,9 @@ export interface TournamentState {
   name: string;
   participants: Participant[];
   rounds: Round[];
+}
+
+export interface UpdateMatchPayload {
+  matchNo: number;
+  scores: any;
 }
