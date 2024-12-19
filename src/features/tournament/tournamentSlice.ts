@@ -8,16 +8,18 @@ interface Participant {
 
 type Result = 'W' | 'D' | 'L'
 
-export interface ParticipantScore {
-  participantId: number;
-  score: number;
+export interface Record {
+  participantId?: number;
+  score?: number;
   result?: Result;
+  advanceFrom?: number;
 }
 
 export interface Match {
   matchNo: number;
-  scores: ParticipantScore[];
+  records: Record[];
   advanceTo?: number;
+  isComplete: boolean;
 }
 
 export interface Round {

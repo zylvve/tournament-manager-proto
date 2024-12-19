@@ -26,35 +26,29 @@ export const mockTournament: TournamentSliceState = {
       matches: [
         {
           matchNo: 1,
-          scores: [
+          records: [
             {
               participantId: 1,
-              score: 3,
-              result: 'W',
             },
             {
               participantId: 2,
-              score: 2,
-              result: 'L',
             },
           ],
           advanceTo: 3,
+          isComplete: false,
         },
         {
           matchNo: 2,
-          scores: [
+          records: [
             {
               participantId: 3,
-              score: 1,
-              result: 'W',
             },
             {
               participantId: 4,
-              score: 0,
-              result: 'L',
             },
           ],
           advanceTo: 3,
+          isComplete: false,
         },
       ]
     },
@@ -63,18 +57,15 @@ export const mockTournament: TournamentSliceState = {
       matches: [
         {
           matchNo: 3,
-          scores: [
+          records: [
             {
-              participantId: 1,
-              score: 1,
-              result: 'L',
+              advanceFrom: 1,
             },
             {
-              participantId: 3,
-              score: 2,
-              result: 'W',
+              advanceFrom: 2,
             },
-          ]
+          ],
+          isComplete: false,
         }
       ]
     }

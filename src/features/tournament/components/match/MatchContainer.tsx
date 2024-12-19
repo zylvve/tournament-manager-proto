@@ -1,22 +1,24 @@
 import styles from './Match.module.css'
 import type { Match } from '../../tournamentSlice'
-import ScoreRow from './ScoreRow';
+import RecordContainer from './RecordContainer';
 
 interface MatchContainerProps {
   match: Match;
 }
 
 const MatchContainer = ({match}: MatchContainerProps) => {
-  const scoreRows = [];
-  for (let score of match.scores)  {
-    scoreRows.push(
-      <ScoreRow score={score} key={score.participantId}/>
+  const RecordContainers = [];
+  
+  let key = match.matchNo * 1000;
+  for (let record of match.records)  {
+    RecordContainers.push(
+      <RecordContainer record={record} key={++key}/>
     )
   }
 
   return (
     <div className={styles.match}>
-      {scoreRows}
+      {RecordContainers}
     </div>
   )
 }
