@@ -1,5 +1,5 @@
 import styles from './Match.module.css'
-import type { Match } from '../../tournamentSlice'
+import type { Match } from '../../tournamentTypes'
 import RecordContainer from './RecordContainer';
 
 interface MatchContainerProps {

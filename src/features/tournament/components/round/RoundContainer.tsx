@@ -2,7 +2,7 @@ import styles from './Round.module.css'
 import { useAppSelector } from '../../../../app/hooks';
 import { selectRounds } from '../../tournamentSlice';
 import MatchContainer from '../match/MatchContainer';
-import type { Round } from '../../tournamentSlice';
+import type { Round } from '../../tournamentTypes';
 
 interface RoundContainerProps {
   round: Round;

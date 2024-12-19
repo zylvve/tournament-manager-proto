@@ -1,4 +1,4 @@
-import type { Record } from "../../tournamentSlice"
+import type { Record } from "../../tournamentTypes"
 import { selectParticipants } from '../../tournamentSlice';
 import { useAppSelector } from '../../../../app/hooks';
 import styles from './Match.module.css'
