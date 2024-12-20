@@ -6,8 +6,9 @@ import RoundContainer from '../round/RoundContainer'
 const BracketContainer = () => {
   const rounds = useAppSelector(selectRounds);
   const roundsToRender = [];
-  for (let round of rounds) {
-    roundsToRender.push(<RoundContainer round={round} key={round.roundNo}/>) 
+  for (let roundId of rounds.allIds) {
+    let round = rounds.byId[roundId];
+    roundsToRender.push(<RoundContainer round={round} key={roundId}/>) 
   }
 
   return (

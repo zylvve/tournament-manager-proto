@@ -15,7 +15,7 @@ const RecordContainer = ({record, onChange}: RecordContainerProps) => {
   return (
     <div key={record.participantId} className={styles.record_row}>
       <div className={styles.name}>
-        {participants.find(participant => participant.id === record.participantId)?.name}
+        {record.participantId ? participants.byId[record.participantId].name : ""}
       </div>
       <input value={record.score} onChange={onChange} className={`
         ${styles.score}

@@ -30,7 +30,7 @@ const MatchContainer = ({match}: MatchContainerProps) => {
   
   const confirm = () => {
     const payload: UpdateMatchPayload = {
-      matchNo: match.matchNo,
+      matchId: match.id,
       scores: inputValues, 
     }
     dispatch(updateMatch(payload))

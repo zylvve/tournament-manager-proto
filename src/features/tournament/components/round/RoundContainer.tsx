@@ -1,6 +1,6 @@
 import styles from './Round.module.css'
 import { useAppSelector } from '../../../../app/hooks';
-import { selectRounds } from '../../tournamentSlice';
+import { selectMatches, selectRounds } from '../../tournamentSlice';
 import MatchContainer from '../match/MatchContainer';
 import type { Round } from '../../tournamentTypes';
 
@@ -10,22 +10,23 @@ interface RoundContainerProps {
 
 const RoundContainer = ({round}: RoundContainerProps) => {
   const rounds = useAppSelector(selectRounds);
-  const matches = rounds.find(rnd => rnd.roundNo === round.roundNo)?.matches;
+  const matches = useAppSelector(selectMatches);
+  const roundMatches = rounds.byId[round.id].matches.map(id => matches.byId[id]);
   
-  const matchesToRender = [];
+  const matchComponents = [];
   if (matches !== undefined) {
-    for (let match of matches) {
-      matchesToRender.push(<MatchContainer match={match} key={match.matchNo}/>)
+    for (let match of roundMatches) {
+      matchComponents.push(<MatchContainer match={match} key={match.id}/>)
     }
   }
 
   return (
     <div className={styles.round}>
       <div className={styles.round_title}>
-        Round {round.roundNo}
+        {round.name}
       </div>
       <div className={styles.matches}>
-        {matchesToRender}
+        {matchComponents}
       </div>
     </div>
   )

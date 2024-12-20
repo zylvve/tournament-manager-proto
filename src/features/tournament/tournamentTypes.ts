@@ -1,8 +1,36 @@
-type Result = 'W' | 'D' | 'L'
+type EntityList<T> = {
+  byId: {
+    [key: number]: T;
+  },
+  allIds: number[];
+}
+
+export type TournamentSliceState = EntityList<Tournament>
+
+export interface Tournament {
+  id: number;
+  name: string;
+  participants: EntityList<Participant>;
+  rounds: EntityList<Round>;
+  matches: EntityList<Match>;
+}
 
 export interface Participant {
   id: number;
   name: string;
+}
+
+export interface Round {
+  id: number;
+  name: string;
+  matches: number[];
+}
+
+export interface Match {
+  id: number;
+  records: Record[];
+  isComplete: boolean;
+  advanceTo?: number;
 }
 
 export interface Record {
@@ -12,25 +40,9 @@ export interface Record {
   advanceFrom?: number;
 }
 
-export interface Match {
-  matchNo: number;
-  records: Record[];
-  advanceTo?: number;
-  isComplete: boolean;
-}
-
-export interface Round {
-  roundNo: number;
-  matches: Match[];
-}
-
-export interface TournamentState {
-  name: string;
-  participants: Participant[];
-  rounds: Round[];
-}
+type Result = 'W' | 'D' | 'L'
 
 export interface UpdateMatchPayload {
-  matchNo: number;
-  scores: any;
+  matchId: number;
+  scores: { [participantId: number]: number };
 }
