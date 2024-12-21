@@ -21,7 +21,7 @@ export const mockTournaments: TournamentSliceState = {
           },
           4: {
             id: 4,
-            name: "Player 3",
+            name: "Player 4",
           },
         },
         allIds: [1, 2, 3, 4],
