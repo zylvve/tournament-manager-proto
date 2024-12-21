@@ -5,7 +5,7 @@
 }
 
 .round_title {
-  height: 2rem;
+  height: 2em;
   
   font-weight: bold;
 }
@@ -17,5 +17,5 @@
   align-items: center;
   flex-grow: 1;
   
-  gap: 5px;
+  gap: 0.5rem;
 }
