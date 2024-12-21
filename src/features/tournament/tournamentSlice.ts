@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import { mockTournaments } from "./mockTournaments";
 import type { UpdateMatchPayload } from "./tournamentTypes";
-import { findMatchByNo, findRecordByAdvanceFrom } from "./tournamentHelpers";
+import {findRecordByAdvanceFrom } from "./tournamentHelpers";
 
 const initialState = mockTournaments; 
 
@@ -10,7 +10,9 @@ export const tournamentSlice = createSlice({
   initialState, 
   reducers: {
     updateMatch: (state, action: PayloadAction<UpdateMatchPayload>) => {
-      const match = findMatchByNo(action.payload.matchId, state);
+      const findMatchById = (id: number) => (state.byId[1].matches.byId[id]);
+
+      const match = findMatchById(action.payload.matchId);
       if (match === undefined) return;
 
       let winnerRecord;
@@ -35,13 +37,12 @@ export const tournamentSlice = createSlice({
         
       const winnerId = winnerRecord?.participantId;
       const winnerAdvancesTo = match.advanceTo;
-      const winnerAdvancesFrom = match.matchNo;
       if (winnerAdvancesTo === undefined) return;
       
-      const nextMatch = findMatchByNo(winnerAdvancesTo, state);
+      const nextMatch = findMatchById(winnerAdvancesTo);
       if (nextMatch === undefined) return;
       
-      const updatedRecord = findRecordByAdvanceFrom(winnerAdvancesFrom, nextMatch);
+      const updatedRecord = findRecordByAdvanceFrom(match.id, nextMatch);
       if (updatedRecord === undefined) return;
       updatedRecord.participantId = winnerId;
     }
