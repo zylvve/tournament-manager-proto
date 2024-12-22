@@ -33,6 +33,11 @@
   color: var(--color-primary-text);
 }
 
+.score_input {
+  height: 100%;
+  border: 3px solid var(--color-primary-text);
+}
+
 .result_W {
   background-color: var(--color-result-w);
 }
@@ -45,16 +50,17 @@
   background-color: var(--color-result-l);
 }
 
-.confirm_button {
+.input_form {
+  position: relative;
+}
+
+.submit_score_btn {
   position: absolute;
-  
+
   width: 1.5em;
   height: 1.5em;
   
-  top: 0.75em;
-  right: 1.5em;
-  
-  background-color: var(--color-secondary-bg);
+  background-color: var(--color-primary-bg);
   color: var(--color-primary-text);
   
   border: none;

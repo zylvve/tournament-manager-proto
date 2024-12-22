@@ -42,7 +42,9 @@ export interface Record {
 
 type Result = 'W' | 'D' | 'L'
 
-export interface UpdateMatchPayload {
+export interface UpdateScorePayload {
+  tournamentId: number;
   matchId: number;
-  scores: { [participantId: number]: number };
+  participantId: number;
+  score: number;
 }

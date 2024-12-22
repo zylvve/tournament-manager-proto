@@ -2,15 +2,24 @@ import { useAppSelector } from "../../../../app/hooks"
 import BracketContainer from "../bracket/BracketContainer"
 import { selectName } from "../../tournamentSlice"
 import styles from './Tournament.module.css'
+import { createContext } from "react"
 
-const Tournament = () => {
+interface TournamentProps {
+  tournamentId: number;
+}
+
+export const TournamentContext = createContext(0);
+
+const Tournament = ({tournamentId}: TournamentProps) => {
   const name = useAppSelector(selectName);
 
   return (
-    <div className={styles.tournament}>
-      <h2>{name}</h2>
-      <BracketContainer/>
-    </div>
+    <TournamentContext.Provider value={tournamentId}>
+      <div className={styles.tournament}>
+        <h2>{name}</h2>
+        <BracketContainer/>
+      </div>
+    </TournamentContext.Provider>
   )
 }
 

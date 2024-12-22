@@ -4,7 +4,7 @@ import styles from './App.module.css'
 const App = () => {
   return (
     <div data-theme="dark" className={styles.app}>
-      <Tournament/>
+      <Tournament tournamentId={1}/>
     </div>
   )
 }

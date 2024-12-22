@@ -2,14 +2,13 @@ import type { Record } from "../../tournamentTypes"
 import { selectParticipants } from '../../tournamentSlice';
 import { useAppSelector } from '../../../../app/hooks';
 import styles from './Match.module.css'
-import type { ChangeEventHandler } from "react";
+import ScoreContainer from "./ScoreContainer";
 
 interface RecordContainerProps {
   record: Record,
-  onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
-const RecordContainer = ({record, onChange}: RecordContainerProps) => {
+const RecordContainer = ({record}: RecordContainerProps) => {
   const participants = useAppSelector(selectParticipants);
 
   return (
@@ -17,10 +16,7 @@ const RecordContainer = ({record, onChange}: RecordContainerProps) => {
       <div className={styles.name}>
         {record.participantId ? participants.byId[record.participantId].name : ""}
       </div>
-      <input value={record.score} onChange={onChange} className={`
-        ${styles.score}
-        ${styles[`result_${record.result}`]}
-      `} />
+      <ScoreContainer record={record}/>
     </div>
   )
 }
