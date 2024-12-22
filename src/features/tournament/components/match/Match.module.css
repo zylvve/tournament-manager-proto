@@ -54,7 +54,7 @@
   position: relative;
 }
 
-.submit_score_btn {
+.btn {
   position: absolute;
 
   width: 1.5em;
@@ -64,4 +64,14 @@
   color: var(--color-primary-text);
   
   border: none;
+}
+
+.complete_match_btn {
+  display: none;
+}
+
+.match:hover .complete_match_btn {
+  display: block;
+  top: 0.75em;
+  right: 1.5em;
 }

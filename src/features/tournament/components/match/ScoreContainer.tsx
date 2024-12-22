@@ -38,10 +38,10 @@ const ScoreContainer = ({ record }: ScoreContainerProps) => {
     isWriteable ?
       <form onSubmit={submitInput} className={styles.input_form}>
         <input onChange={(event) => setTempScore(event.target.value)} className={`${styles.score} ${styles.score_input}`}/>
-        <button className={styles.submit_score_btn}>✓</button>
+        <button className={`${styles.btn} ${styles.submit_score_btn}`}>⏎</button>
       </form>
       :
-      <div onClick={() => setIsWriteable(true)} className={styles.score}>
+      <div onClick={() => setIsWriteable(true)} className={`${styles.score} ${styles["result_" + record.result]}`}>
         {tempScore}
       </div>
   )

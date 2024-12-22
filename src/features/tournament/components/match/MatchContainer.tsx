@@ -1,7 +1,10 @@
 import styles from './Match.module.css'
 import type { Match,  } from '../../tournamentTypes'
 import RecordContainer from './RecordContainer';
-import { createContext } from 'react';
+import { createContext, useContext, type MouseEventHandler } from 'react';
+import { TournamentContext } from '../tournament/Tournament';
+import { useAppDispatch } from '../../../../app/hooks';
+import { completeMatch, advanceWinner } from '../../tournamentSlice';
  
 interface MatchContainerProps {
   match: Match;
@@ -19,10 +22,25 @@ const MatchContainer = ({match}: MatchContainerProps) => {
     )
   }
   
+  const dispatch = useAppDispatch();
+  const tournamentId = useContext(TournamentContext);
+
+  const submitMatch: MouseEventHandler<HTMLButtonElement> = () => {
+    dispatch(completeMatch({
+      tournamentId,
+      matchId: match.id,
+    }));
+    dispatch(advanceWinner({
+      tournamentId,
+      matchId: match.id,
+    }));
+  }
+  
   return (
     <MatchContext.Provider value={match.id}>
       <div className={styles.match}>
         {RecordContainers}
+        <button className={`${styles.btn} ${styles.complete_match_btn}`} onClick={submitMatch}>✓</button>
       </div>
     </MatchContext.Provider>
   )

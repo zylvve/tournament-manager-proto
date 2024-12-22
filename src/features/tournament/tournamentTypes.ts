@@ -48,3 +48,13 @@ export interface UpdateScorePayload {
   participantId: number;
   score: number;
 }
+
+export interface CompleteMatchPayload {
+  tournamentId: number;
+  matchId: number;
+}
+
+export interface AdvanceWinnerPayload {
+  tournamentId: number;
+  matchId: number;
+}
