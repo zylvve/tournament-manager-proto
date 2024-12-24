@@ -1,4 +1,4 @@
-type EntityList<T> = {
+export type EntityList<T> = {
   byId: {
     [key: number]: T;
   },
