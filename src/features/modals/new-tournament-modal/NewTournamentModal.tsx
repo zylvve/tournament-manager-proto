@@ -24,15 +24,20 @@ const NewTournamentModal = () => {
     <div className={styles.modal_container}>
       <div className={styles.modal}>
         <form className={styles.form} onSubmit={submitTournament}>
-          <div>
-            <label>Name:</label>
-            <input type="text" onChange={(event) => setName(event.target.value)}/>
+          <div className={styles.fields}>
+            <div className={styles.field}>
+              <label>Name:</label>
+              <input type="text" onChange={(event) => setName(event.target.value)}/>
+            </div>
+            <div className={styles.field}>
+              <label>Participants (each on a separate line):</label>
+              <textarea rows={8} onChange={(event) => setParticipants(event.target.value)}/>
+            </div>
           </div>
-          <div>
-            <label>Participants:</label>
-            <textarea onChange={(event) => setParticipants(event.target.value)}/>
+          <div className={styles.buttons}>
+            <button className={styles.submit_btn}> Generate a new tournament</button>
+            <button className={styles.close_btn} onClick={()=>dispatch(closeNewTournamentModal())}>Close</button>
           </div>
-          <button>Submit</button>
         </form>
       </div>
     </div>
