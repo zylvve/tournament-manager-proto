@@ -1,14 +1,20 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { mockTournaments } from "./mockTournaments";
-import type { AdvanceWinnerPayload, CompleteMatchPayload, UpdateScorePayload } from "./tournamentTypes";
+import type { AdvanceWinnerPayload, CompleteMatchPayload, NewTournamentPayload, TournamentSliceState, UpdateScorePayload } from "./tournamentTypes";
 import { findRecordByAdvanceFrom } from "./tournamentHelpers";
+import { generateTournament } from "./generateTournament";
 
-const initialState = mockTournaments; 
+const initialState: TournamentSliceState = {byId: {}, allIds: []}; 
 
 export const tournamentSlice = createSlice({
   name: "tournaments",
   initialState, 
   reducers: {
+    newTournament: (state, action: PayloadAction<NewTournamentPayload>) => {
+      const { name, participantString } = action.payload;
+      const tournamentId = state.allIds.length + 1;
+      state.allIds.push(tournamentId);
+      state.byId[tournamentId] = generateTournament(tournamentId, name, participantString);
+    },
     updateScore: (state, action: PayloadAction<UpdateScorePayload>) => {
       const { tournamentId, matchId, participantId, score } = action.payload;
       const record = state.byId[tournamentId].matches.byId[matchId].records.find(record => record.participantId === participantId);
@@ -48,6 +54,7 @@ export const tournamentSlice = createSlice({
     }
   },
   selectors: {
+    selectTournaments: tournaments => tournaments,
     selectName: tournaments => tournaments.byId[1].name,
     selectParticipants: tournaments => tournaments.byId[1].participants,
     selectRounds: tournaments => tournaments.byId[1].rounds,
@@ -55,5 +62,5 @@ export const tournamentSlice = createSlice({
   }
 })
 
-export const { selectParticipants, selectRounds, selectName, selectMatches } = tournamentSlice.selectors
-export const { updateScore, completeMatch, advanceWinner } = tournamentSlice.actions
+export const { selectTournaments, selectParticipants, selectRounds, selectName, selectMatches } = tournamentSlice.selectors
+export const { newTournament, updateScore, completeMatch, advanceWinner } = tournamentSlice.actions
