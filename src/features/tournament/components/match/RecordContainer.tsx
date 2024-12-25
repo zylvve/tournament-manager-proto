@@ -3,13 +3,16 @@ import { selectParticipants } from '../../tournamentSlice';
 import { useAppSelector } from '../../../../app/hooks';
 import styles from './Match.module.css'
 import ScoreContainer from "./ScoreContainer";
+import { TournamentContext } from "../tournament/Tournament";
+import { useContext } from "react";
 
 interface RecordContainerProps {
   record: Record,
 }
 
 const RecordContainer = ({record}: RecordContainerProps) => {
-  const participants = useAppSelector(selectParticipants);
+  const tournamentId = useContext(TournamentContext);
+  const participants = useAppSelector((state) => selectParticipants(state, tournamentId));
 
   return (
     <div key={record.participantId} className={styles.record_row}>

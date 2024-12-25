@@ -3,14 +3,17 @@ import { useAppSelector } from '../../../../app/hooks';
 import { selectMatches, selectRounds } from '../../tournamentSlice';
 import MatchContainer from '../match/MatchContainer';
 import type { Round } from '../../tournamentTypes';
+import { useContext } from 'react';
+import { TournamentContext } from '../tournament/Tournament';
 
 interface RoundContainerProps {
   round: Round;
 }
 
 const RoundContainer = ({round}: RoundContainerProps) => {
-  const rounds = useAppSelector(selectRounds);
-  const matches = useAppSelector(selectMatches);
+  const tournamentId = useContext(TournamentContext);
+  const rounds = useAppSelector((state) => selectRounds(state, tournamentId));
+  const matches = useAppSelector((state) => selectMatches(state, tournamentId));
   const roundMatches = rounds.byId[round.id].matches.map(id => matches.byId[id]);
   
   const matchComponents = [];

@@ -2,9 +2,12 @@ import { useAppSelector } from '../../../../app/hooks'
 import { selectRounds } from '../../tournamentSlice'
 import styles from './Bracket.module.css'
 import RoundContainer from '../round/RoundContainer'
+import { useContext } from 'react'
+import { TournamentContext } from '../tournament/Tournament'
 
 const BracketContainer = () => {
-  const rounds = useAppSelector(selectRounds);
+  const tournamentId = useContext(TournamentContext);
+  const rounds = useAppSelector((state) => selectRounds(state, tournamentId));
   const roundsToRender = [];
   for (let roundId of rounds.allIds) {
     let round = rounds.byId[roundId];

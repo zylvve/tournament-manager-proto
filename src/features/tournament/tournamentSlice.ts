@@ -55,10 +55,10 @@ export const tournamentSlice = createSlice({
   },
   selectors: {
     selectTournaments: tournaments => tournaments,
-    selectName: tournaments => tournaments.byId[1].name,
-    selectParticipants: tournaments => tournaments.byId[1].participants,
-    selectRounds: tournaments => tournaments.byId[1].rounds,
-    selectMatches: tournaments => tournaments.byId[1].matches,
+    selectName: (tournaments, id) => tournaments.byId[id].name,
+    selectParticipants: (tournaments, id) => tournaments.byId[id].participants,
+    selectRounds: (tournaments, id) => tournaments.byId[id].rounds,
+    selectMatches: (tournaments, id) => tournaments.byId[id].matches,
   }
 })
 

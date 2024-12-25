@@ -11,7 +11,7 @@ interface TournamentProps {
 export const TournamentContext = createContext(0);
 
 const Tournament = ({tournamentId}: TournamentProps) => {
-  const name = useAppSelector(selectName);
+  const name = useAppSelector((state) => selectName(state, tournamentId));
 
   return (
     <TournamentContext.Provider value={tournamentId}>
