@@ -54,9 +54,22 @@
   position: relative;
 }
 
-.btn {
+.match_menu {
   position: absolute;
 
+  right: -1.5em;
+  
+  flex-direction: column;
+  gap: 1px;
+  
+  display: none;
+}
+.match:hover .match_menu {
+  display: flex;
+}
+
+
+.match_menu button {
   width: 1.5em;
   height: 1.5em;
   
@@ -64,14 +77,4 @@
   color: var(--color-primary-text);
   
   border: none;
-}
-
-.complete_match_btn {
-  display: none;
-}
-
-.match:hover .complete_match_btn {
-  display: block;
-  top: 0.75em;
-  right: 1.5em;
 }

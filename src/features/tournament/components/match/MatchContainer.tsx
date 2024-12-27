@@ -1,7 +1,8 @@
 import styles from './Match.module.css'
 import type { Match,  } from '../../tournamentTypes'
 import RecordContainer from './RecordContainer';
-import { createContext, useContext, type MouseEventHandler } from 'react';
+import MatchMenu from './MatchMenu';
+import { createContext, useContext, MouseEventHandler, useState } from 'react';
 import { TournamentContext } from '../tournament/Tournament';
 import { useAppDispatch } from '../../../../app/hooks';
 import { completeMatch, advanceWinner } from '../../tournamentSlice';
@@ -13,12 +14,17 @@ interface MatchContainerProps {
 export const MatchContext = createContext(0);
 
 const MatchContainer = ({match}: MatchContainerProps) => {
+  const [editMode, setEditMode] = useState<boolean>(false);  
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+  }
+  
   const RecordContainers = [];
   
   let key = 0;
   for (let record of match.records) {
     RecordContainers.push(
-      <RecordContainer record={record} key={++key}/>
+      <RecordContainer record={record} editMode={editMode} toggleEditMode={toggleEditMode} key={++key}/>
     )
   }
   
@@ -35,12 +41,12 @@ const MatchContainer = ({match}: MatchContainerProps) => {
       matchId: match.id,
     }));
   }
-  
+
   return (
     <MatchContext.Provider value={match.id}>
       <div className={styles.match}>
         {RecordContainers}
-        <button className={`${styles.btn} ${styles.complete_match_btn}`} onClick={submitMatch}>✓</button>
+        <MatchMenu submitMatch={submitMatch} toggleEditMode={toggleEditMode}/>
       </div>
     </MatchContext.Provider>
   )

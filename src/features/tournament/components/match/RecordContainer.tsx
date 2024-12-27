@@ -8,9 +8,11 @@ import { useContext } from "react";
 
 interface RecordContainerProps {
   record: Record,
+  editMode: boolean,
+  toggleEditMode: () => void,
 }
 
-const RecordContainer = ({record}: RecordContainerProps) => {
+const RecordContainer = ({record, editMode, toggleEditMode }: RecordContainerProps) => {
   const tournamentId = useContext(TournamentContext);
   const participants = useAppSelector((state) => selectParticipants(state, tournamentId));
 
@@ -19,7 +21,7 @@ const RecordContainer = ({record}: RecordContainerProps) => {
       <div className={styles.name}>
         {record.participantId ? participants.byId[record.participantId].name : ""}
       </div>
-      <ScoreContainer record={record}/>
+      <ScoreContainer record={record} editMode={editMode} toggleEditMode={toggleEditMode}/>
     </div>
   )
 }
