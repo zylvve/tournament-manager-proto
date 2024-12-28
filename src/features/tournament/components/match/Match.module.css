@@ -8,7 +8,9 @@
   display: flex;
   flex-direction: column;
   
-  gap: 1px;
+  gap: 2px;
+  
+  padding-right: calc(1.5em + 2px);
 }
 
 .record_row {
@@ -35,7 +37,8 @@
 
 .score_input {
   height: 100%;
-  border: 3px solid var(--color-primary-text);
+  color: var(--color-primary-bg);
+  background-color: var(--color-primary-text);
 }
 
 .result_W {
@@ -57,17 +60,16 @@
 .match_menu {
   position: absolute;
 
-  right: -1.5em;
+  right: 0em;
   
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
   
   display: none;
 }
 .match:hover .match_menu {
   display: flex;
 }
-
 
 .match_menu button {
   width: 1.5em;
@@ -77,4 +79,10 @@
   color: var(--color-primary-text);
   
   border: none;
+}
+
+.match_menu .active_btn {
+  font-weight: bold;
+  color: var(--color-primary-bg);
+  background-color: var(--color-primary-text);
 }

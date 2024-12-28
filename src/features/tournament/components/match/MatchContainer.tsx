@@ -46,7 +46,11 @@ const MatchContainer = ({match}: MatchContainerProps) => {
     <MatchContext.Provider value={match.id}>
       <div className={styles.match}>
         {RecordContainers}
-        <MatchMenu submitMatch={submitMatch} toggleEditMode={toggleEditMode}/>
+        <MatchMenu
+          submitMatch={submitMatch}
+          toggleEditMode={toggleEditMode} 
+          editMode={editMode}
+        />
       </div>
     </MatchContext.Provider>
   )
