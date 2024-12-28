@@ -1,14 +1,16 @@
 import { FormEventHandler, useState } from 'react';
 import styles from './NewTournamentTab.module.css'
-import { useAppDispatch } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { NewTournamentPayload } from '../../tournament/tournamentTypes';
-import { newTournament } from '../../tournament/tournamentSlice';
+import { newTournament, selectTournaments } from '../../tournament/tournamentSlice';
 import { closeNewTournamentModal } from '../../modals/modalsSlice';
+import { switchTab } from '../tabSlice';
 
 const NewTournamentTab = () => {
   const [name, setName] = useState<string>("");
   const [partipants, setParticipants] = useState<string>("");
 
+  const newId = useAppSelector(selectTournaments).allIds.length + 1;
   const dispatch = useAppDispatch();
   const submitTournament: FormEventHandler = (event) => {
     event.preventDefault();
@@ -18,6 +20,7 @@ const NewTournamentTab = () => {
     };
     dispatch(newTournament(payload));
     dispatch(closeNewTournamentModal());
+    dispatch(switchTab({id: newId}))
   }
 
   return (

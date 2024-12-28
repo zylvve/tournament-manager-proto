@@ -2,6 +2,7 @@ import { useAppSelector } from "../../app/hooks"
 import { selectTournaments } from "../tournament/tournamentSlice"
 import NewTabHeader from "./NewTabHeader";
 import TabHeader from "./TabHeader";
+import styles from './Tabs.module.css'
 
 const TabHeadersContainer = () => {
   const tournamentsIds = useAppSelector(selectTournaments).allIds;
@@ -12,7 +13,7 @@ const TabHeadersContainer = () => {
   }
 
   return (
-    <div>
+    <div className={styles.tab_headers}>
       {tabHeaders}      
       <NewTabHeader/>
     </div>

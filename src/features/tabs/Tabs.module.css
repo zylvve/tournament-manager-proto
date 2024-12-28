@@ -1,0 +1,21 @@
+@import '../../themes.css';
+
+.tournament_tabs {
+  width: 100%;
+  height: 100%;
+}
+
+.tab_headers {
+  display: flex;
+  align-items: center;
+}
+
+.tab_header {
+  height: 2.5em;
+  padding: 0.5em;
+}
+
+.active_tab_header {
+  background-color: var(--color-secondary-bg);
+  font-weight: bold;
+}
