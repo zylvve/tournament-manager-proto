@@ -1,0 +1,46 @@
+@import '../../../themes.css';
+
+.new_tournament_tab {
+  width: 30%;
+  height: 50%;
+
+  background-color: var(--color-primary-bg);
+  opacity: 1;
+}
+
+.form {
+  display: flex;  
+  flex-direction: column;
+  height: 100%;
+  
+  padding: 1rem;
+}
+
+.fields {
+  display: flex;  
+  flex-direction: column;
+
+  height: 90%;
+}
+
+.fields label{
+  font-weight: bold;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.submit_btn {
+  width: 16em;
+}
+
+.close_btn {
+  width: 6em;
+}
