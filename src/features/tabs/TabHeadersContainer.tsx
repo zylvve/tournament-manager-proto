@@ -9,7 +9,7 @@ const TabHeadersContainer = () => {
   
   const tabHeaders = [];
   for (let id of tournamentsIds) {
-    tabHeaders.push(<TabHeader id={id}/>)
+    tabHeaders.push(<TabHeader id={id} key={id}/>)
   }
 
   return (

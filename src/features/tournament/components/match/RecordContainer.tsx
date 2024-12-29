@@ -8,11 +8,11 @@ import { useContext } from "react";
 
 interface RecordContainerProps {
   record: Record,
+  setTempScore: (participantId: number, score: string) => void;
   editMode: boolean,
-  toggleEditMode: () => void,
 }
 
-const RecordContainer = ({record, editMode, toggleEditMode }: RecordContainerProps) => {
+const RecordContainer = ({record, setTempScore, editMode }: RecordContainerProps) => {
   const tournamentId = useContext(TournamentContext);
   const participants = useAppSelector((state) => selectParticipants(state, tournamentId));
 
@@ -21,7 +21,7 @@ const RecordContainer = ({record, editMode, toggleEditMode }: RecordContainerPro
       <div className={styles.name}>
         {record.participantId ? participants.byId[record.participantId].name : ""}
       </div>
-      <ScoreContainer record={record} editMode={editMode} toggleEditMode={toggleEditMode}/>
+      <ScoreContainer record={record} setTempScore={setTempScore} editMode={editMode}/>
     </div>
   )
 }
