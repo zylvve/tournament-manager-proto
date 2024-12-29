@@ -1,17 +1,16 @@
 @import '../../../themes.css';
 
 .new_tournament_tab {
-  width: 30%;
-  height: 50%;
-
   background-color: var(--color-primary-bg);
   opacity: 1;
 }
 
 .form {
+  width: 50em;
+  height: 24em;
+
   display: flex;  
   flex-direction: column;
-  height: 100%;
   
   padding: 1rem;
 }
